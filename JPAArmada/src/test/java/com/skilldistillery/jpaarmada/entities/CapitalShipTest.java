@@ -44,7 +44,23 @@ class CapitalShipTest {
 	@DisplayName("Testing for correct id and class from database")
 	void testShip1() {
 		assertEquals(1, cp.getId());
-		assertEquals("CR90", cp.getShipClass());
+		assertEquals("CR90 Corvette B", cp.getShipClass());
+	}
+	
+	@Test
+	@DisplayName("Testing for correct squadron, command, and engineering values from database")
+	void testShip2() {
+		assertEquals(1, cp.getCommand());
+		assertEquals(2, cp.getEngineering());
+		assertEquals(1, cp.getSquadron());
+	}
+	
+	@Test
+	@DisplayName("Testing for correct alignment, hull, and point cost from database")
+	void testShip3() {
+		assertEquals("Rebellion", cp.getAlignment());
+		assertEquals(4, cp.getHull());
+		assertEquals(39, cp.getPointCost());
 	}
 
 }

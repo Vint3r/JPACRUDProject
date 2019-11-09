@@ -22,7 +22,17 @@ DROP TABLE IF EXISTS `capital_ship` ;
 
 CREATE TABLE IF NOT EXISTS `capital_ship` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `ship_class` VARCHAR(75) NULL,
+  `ship_class` VARCHAR(75) NOT NULL,
+  `alignment` VARCHAR(50) NOT NULL,
+  `command_value` INT NULL,
+  `engineering_value` INT NULL,
+  `squadron_value` INT NULL,
+  `hull` INT NULL,
+  `point_cost` INT NULL,
+  `forward_shields` INT NULL,
+  `right_shields` INT NULL,
+  `left_shields` INT NULL,
+  `rear_shields` INT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -42,7 +52,9 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `armada`;
-INSERT INTO `capital_ship` (`id`, `ship_class`) VALUES (1, 'CR90');
+INSERT INTO `capital_ship` (`id`, `ship_class`, `alignment`, `command_value`, `engineering_value`, `squadron_value`, `hull`, `point_cost`, `forward_shields`, `right_shields`, `left_shields`, `rear_shields`) VALUES (1, 'CR90 Corvette B', 'Rebellion', 1, 2, 1, 4, 39, 2, 2, 2, 1);
+INSERT INTO `capital_ship` (`id`, `ship_class`, `alignment`, `command_value`, `engineering_value`, `squadron_value`, `hull`, `point_cost`, `forward_shields`, `right_shields`, `left_shields`, `rear_shields`) VALUES (2, 'CR90 Corvette A', 'Rebellion', 1, 2, 1, 4, 44, 2, 2, 2, 1);
+INSERT INTO `capital_ship` (`id`, `ship_class`, `alignment`, `command_value`, `engineering_value`, `squadron_value`, `hull`, `point_cost`, `forward_shields`, `right_shields`, `left_shields`, `rear_shields`) VALUES (3, 'Victory I', 'Empire', 3, 4, 3, 8, 73, 3, 3, 3, 1);
 
 COMMIT;
 
