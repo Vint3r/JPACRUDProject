@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.sun.istack.NotNull;
+
 @Entity
 @Table(name = "capital_ship")
 public class CapitalShip {
@@ -16,6 +18,7 @@ public class CapitalShip {
 	private int id;
 	@Column(name = "ship_class")
 	private String shipClass;
+	@NotNull
 	private String alignment;
 	@Column(name = "command_value")
 	private Integer command;

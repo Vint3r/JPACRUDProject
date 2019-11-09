@@ -13,24 +13,25 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class=“container”>
-		<div class=“row”>
-			<div class=“col-3”></div>
+<c:forEach var="ship" items="${ships}">
+<div class="container">
+		<div class="row">
+			<div class="col-3"></div>
 			<div class="col-6">
-				<a href="getShipList.do" class="btn btn-outline-primary"
-					role="button" aria-disabled="true">Get all ships in database</a> <br>
-				<form:form action="getShipAlign.do" method="GET"
-					modelAttribute="ship">
-					<form:label path="alignment">Alignment:</form:label>
-					<form:input path="alignment" />
-					<form:errors path="alignment"/>
-					<input type = "submit" value = "Search" class="btn btn-outline-primary"role="button" aria-disabled="true"/>
-				</form:form>
+				<h5>${ship.shipClass}(${ship.alignment})</h5>
+				<p>Command Value: ${ship.command}, Engineering Value: ${ship.engineering}, Squadron Value: ${ship.squadron}</p>
+				<p>Hull Points: ${ship.hull}</p>
+				<br>
+				<br>
+				<br>
 			</div>
-			<div class=“col-3”></div>
+			<div class="col-3"><a href="getAllShipInfo.do?sid=${ship.id}" class="btn btn-outline-primary"
+						role="button" aria-disabled="true">Get More Info Here!</a></div>
 		</div>
 	</div>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+<br>
+</c:forEach>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
 		crossorigin="anonymous"></script>
 	<script
@@ -43,4 +44,3 @@
 		crossorigin="anonymous"></script>
 </body>
 </html>
-
