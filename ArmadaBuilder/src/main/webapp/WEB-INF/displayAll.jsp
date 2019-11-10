@@ -12,15 +12,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body background="https://i.imgur.com/o1GOfK6.jpg">
 <c:forEach var="ship" items="${ships}">
 <div class="container">
 		<div class="row">
-			<div class="col-3"></div>
+			<div class="col-3"><a href="/" role="button" aria-disabled="true"
+					class="btn btn-outline-primary">Return Home</a></div>
 			<div class="col-6">
-				<h5>${ship.shipClass}(${ship.alignment})</h5>
-				<p>Command Value: ${ship.command}, Engineering Value: ${ship.engineering}, Squadron Value: ${ship.squadron}</p>
-				<p>Hull Points: ${ship.hull}</p>
+				<h2 style="color:GREEN;">${ship.shipClass}(${ship.alignment})</h2>
+				<p style="color:GREEN;">Command Value: ${ship.command}, Engineering Value: ${ship.engineering}, Squadron Value: ${ship.squadron}</p>
+				<p style="color:GREEN;">Hull Points: ${ship.hull}</p>
 				<br>
 				<br>
 				<br>

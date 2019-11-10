@@ -12,21 +12,71 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body>
+<body background="https://i.imgur.com/o1GOfK6.jpg">
+	<c:choose>
+		<c:when test="${success == true}">
+			<h4>Ship was successfully deleted!</h4>
+		</c:when>
+		<c:when test="${success == false}">Delete failed, try again</c:when>
+	</c:choose>
 	<div class=“container”>
 		<div class=“row”>
 			<div class=“col-3”></div>
-			<div class="col-6">
-				<a href="getShipList.do" class="btn btn-outline-primary"
-					role="button" aria-disabled="true">Get all ships in database</a> <br>
-				<form:form action="getShipAlign.do" method="GET"
-					modelAttribute="ship">
-					<form:label path="alignment">Alignment:</form:label>
-					<form:input path="alignment" />
-					<form:errors path="alignment"/>
-					<input type = "submit" value = "Search" class="btn btn-outline-primary"role="button" aria-disabled="true"/>
-				</form:form>
+			<div class="container">
+				<div class="row">
+					<div class="col-3">
+						<a href="getShipList.do" class="btn btn-outline-success"
+							role="button" aria-disabled="true">Get all ships in database</a><br>
+						<a href="goAddShip.do" class="btn btn-outline-success"
+							role="button" aria-disabled="true">Add a ship</a><br>
+					</div>
+					<div class="col-6">
+						<form:form action="getShipAlign.do" method="GET"
+							modelAttribute="ship">
+							<form:label path="alignment" style="color:GREEN;">Alignment</form:label>
+							<form:input path="alignment" />
+							<form:errors path="alignment" />
+							<input type="submit" value="Search"
+								class="btn btn-outline-success" role="button"
+								aria-disabled="true" />
+							<p style="color:GREEN;">Search the database for all ships under one alignment</p>
+							<br>
+						</form:form>
+						<br> <br> <br>
+						<form:form action="getShipPoints.do" method="GET"
+							modelAttribute="ship">
+							<form:label path="pointCost" style="color:Blue;">Points:</form:label>
+							<form:input path="pointCost" />
+							<form:errors path="pointCost" />
+							<input type="submit" value="Search"
+								class="btn btn-outline-primary" role="button"
+								aria-disabled="true" />
+							<p style= "color:Blue;">Search the database for all ships under the entered point
+								count</p>
+							<br>
+						</form:form>
+						<br> <br> <br>
+						<form:form action="getShipClass.do" method="GET"
+							modelAttribute="ship">
+							<form:label path="shipClass" style="color:RED;">Class:</form:label>
+							<form:input path="shipClass" />
+							<form:errors path="shipClass" />
+							<input type="submit" value="Search"
+								class="btn btn-outline-danger" role="button"
+								aria-disabled="true" />
+							<p style="color:RED;">Search the database for all ships with the entered text in
+								their class type</p>
+							<br>
+						</form:form>
+						<br> <br> <br>
+					</div>
+					<div class="col-3">
+						<a href="/" class="btn btn-outline-success" role="button"
+							aria-disabled="true">Home</a><br>
+					</div>
+				</div>
 			</div>
+
 			<div class=“col-3”></div>
 		</div>
 	</div>

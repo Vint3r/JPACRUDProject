@@ -19,7 +19,7 @@ public class ArmadaDAOImpl implements ArmadaDAO {
 
 	@Override
 	public List<CapitalShip> getShipByClass(String type) {
-		String sql = "SELECT ship FROM CapitalShip ship WHERE ship.class LIKE :fclass";
+		String sql = "SELECT ship FROM CapitalShip ship WHERE ship.shipClass LIKE :fclass ORDER BY ship.alignment, ship.pointCost";
 		List<CapitalShip> ships = em.createQuery(sql, CapitalShip.class).setParameter("fclass", "%" + type + "%")
 				.getResultList();
 		return ships;
@@ -34,7 +34,7 @@ public class ArmadaDAOImpl implements ArmadaDAO {
 
 	@Override
 	public List<CapitalShip> getAllShipsByAlignment(String alignment) {
-		String sql = "SELECT ship FROM CapitalShip ship WHERE ship.alignment LIKE :align";
+		String sql = "SELECT ship FROM CapitalShip ship WHERE ship.alignment LIKE :align ORDER BY ship.alignment, ship.pointCost";
 		List<CapitalShip> ships = em.createQuery(sql, CapitalShip.class).setParameter("align", "%" + alignment + "%")
 				.getResultList();
 		return ships;
@@ -42,7 +42,7 @@ public class ArmadaDAOImpl implements ArmadaDAO {
 
 	@Override
 	public List<CapitalShip> getShipsByCost(int points) {
-		String sql = "SELECT ship FROM CapitalShip ship WHERE ship.pointCost > :points ORDER BY ship.pointCost";
+		String sql = "SELECT ship FROM CapitalShip ship WHERE ship.pointCost < :points ORDER BY ship.alignment, ship.pointCost";
 		List<CapitalShip> ships = em.createQuery(sql, CapitalShip.class).setParameter("points", points).getResultList();
 		return ships;
 	}
@@ -69,8 +69,9 @@ public class ArmadaDAOImpl implements ArmadaDAO {
 	}
 
 	@Override
-	public CapitalShip updateAShip(CapitalShip shipUp) {
+	public boolean updateAShip(CapitalShip shipUp) {
 		CapitalShip update = em.find(CapitalShip.class, shipUp.getId());
+		boolean success = false;
 		if (!update.equals(null)) {
 			update.setShipClass(shipUp.getShipClass());
 			update.setCommand(shipUp.getCommand());
@@ -83,9 +84,10 @@ public class ArmadaDAOImpl implements ArmadaDAO {
 			update.setRightShields(shipUp.getRightShields());
 			update.setAlignment(shipUp.getAlignment());
 			update.setPointCost(shipUp.getPointCost());
+			success = true;
 		}
 		em.flush();
-		return update;
+		return success;
 	}
 
 	@Override
