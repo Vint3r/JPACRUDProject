@@ -15,9 +15,9 @@
 <body background="https://i.imgur.com/o1GOfK6.jpg">
 	<c:choose>
 		<c:when test="${success == true}">
-			<h4>Ship was successfully deleted!</h4>
+			<h4 style="color:Green;">Ship was successfully deleted!</h4>
 		</c:when>
-		<c:when test="${success == false}">Delete failed, try again</c:when>
+		<c:when test="${success == false}"><h4 style="color:Green;">Delete failed, try again</h4></c:when>
 	</c:choose>
 	<div class=“container”>
 		<div class=“row”>

@@ -16,9 +16,9 @@
 <body background="https://i.imgur.com/o1GOfK6.jpg">
 	<c:choose>
 		<c:when test="${success == true}">
-			<h4>Update Successful</h4>
+			<h4 style="color:Green;">Update Successful</h4>
 		</c:when>
-		<c:when test="${success == false}">Update Failed</c:when>
+		<c:when test="${success == false}"><h4 style="color:Green;">Update Failed</h4></c:when>
 	</c:choose>
 	<div class="container">
 		<div class="row">
