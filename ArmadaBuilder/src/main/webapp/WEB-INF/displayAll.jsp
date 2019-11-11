@@ -16,7 +16,7 @@
 <c:forEach var="ship" items="${ships}">
 <div class="container">
 		<div class="row">
-			<div class="col-3"><a href="/" role="button" aria-disabled="true"
+			<div class="col-3"><a href="goHome.do" role="button" aria-disabled="true"
 					class="btn btn-outline-primary">Return Home</a></div>
 			<div class="col-6">
 				<h2 style="color:GREEN;">${ship.shipClass}(${ship.alignment})</h2>

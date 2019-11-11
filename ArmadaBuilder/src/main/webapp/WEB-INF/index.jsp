@@ -71,7 +71,7 @@
 						<br> <br> <br>
 					</div>
 					<div class="col-3">
-						<a href="/" class="btn btn-outline-success" role="button"
+						<a href="goHome.do" class="btn btn-outline-success" role="button"
 							aria-disabled="true">Home</a><br>
 					</div>
 				</div>

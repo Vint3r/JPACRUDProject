@@ -23,7 +23,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-3">
-				<a href="/" role="button" aria-disabled="true"
+				<a href="goHome.do" role="button" aria-disabled="true"
 					class="btn btn-outline-primary">Return Home</a><br>
 				<br>
 				<br>

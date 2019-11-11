@@ -21,7 +21,7 @@ public class ArmadaController {
 	@Autowired
 	ArmadaDAO dao;
 
-	@RequestMapping(path = "/", method = RequestMethod.GET)
+	@RequestMapping(path = {"/", "goHome.do"}, method = RequestMethod.GET)
 	public String index(Model model) {
 		model.addAttribute("ship", new CapitalShip());
 		return "index";
@@ -144,10 +144,34 @@ public class ArmadaController {
 	@RequestMapping(path = "create.do", method = RequestMethod.GET)
 	public ModelAndView createThenDisplay(CapitalShip ship) {
 		ModelAndView mv = new ModelAndView();
-		Boolean success = dao.addAShip(ship);
-		mv.addObject("success", success);
-		mv.addObject("ship", ship);
-		mv.setViewName("displaySingle");
-		return mv;
+		if(!ship.getClass().equals(null) && !ship.getClass().equals("")) {
+			int points = ship.getPointCost();
+			if(points > 0) {
+				int hull = ship.getHull();
+				if(hull > 0) {
+					Boolean success = dao.addAShip(ship);
+					mv.addObject("success", success);
+					mv.addObject("ship", ship);
+					mv.setViewName("displaySingle");
+					return mv;
+					
+				} else {
+					ship.setShipClass("There was an error, try again");
+					mv.addObject("ship", ship);
+					mv.setViewName("add");
+					return mv;
+				}
+			} else {
+				ship.setShipClass("There was an error, try again");
+				mv.addObject("ship", ship);
+				mv.setViewName("add");
+				return mv;
+			}
+		} else {
+			ship.setShipClass("There was an error, try again");
+			mv.addObject("ship", ship);
+			mv.setViewName("add");
+			return mv;
+		}
 	}
 }
